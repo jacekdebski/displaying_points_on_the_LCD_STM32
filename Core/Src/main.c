@@ -27,6 +27,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <string.h>
+#include "generate_number.h"
+#include "lcd.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,7 +69,8 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	uint8_t x;
+	uint8_t y;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -101,8 +104,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  uint8_t test [] = {0x1F,0x05,0x07};
-	  lcd_data(test,3);
+	  if(HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin) == GPIO_PIN_RESET){
+		   generate_position(&x, &y);
+		   display_point(&x, &y);
+		   HAL_Delay(1000);
+		   clear_point(&x, &y);
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
