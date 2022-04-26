@@ -69,8 +69,6 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	uint8_t x;
-	uint8_t y;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -104,12 +102,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(HAL_GPIO_ReadPin(USER_BUTTON_GPIO_Port, USER_BUTTON_Pin) == GPIO_PIN_RESET){
-		   generate_position(&x, &y);
-		   display_point(&x, &y);
-		   HAL_Delay(1000);
-		   clear_point(&x, &y);
-	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -165,7 +157,16 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	uint8_t x;
+	uint8_t y;
+	if(GPIO_Pin == USER_BUTTON_Pin)
+	{
+		generate_position(&x, &y);
+		display_point(&x, &y);
+	}
+}
 /* USER CODE END 4 */
 
 /**
