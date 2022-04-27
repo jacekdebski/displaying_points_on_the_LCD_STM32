@@ -7,7 +7,7 @@ void lcd_reset(void);
 
 void lcd_cmd(uint8_t cmd);
 
-void lcd_data(const uint8_t* data, int size);
+void lcd_data(const uint8_t** data, const uint8_t rows, const uint8_t columns);
 
 void lcd_init();
 
