@@ -14,8 +14,6 @@ void lcd_cmd(uint8_t cmd){
 	HAL_StatusTypeDef err_receive;
 	while(HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY);
 	err_transmit = HAL_SPI_Transmit(&hspi1, &cmd, 1, HAL_MAX_DELAY);
-	while(HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY);
-	err_receive = HAL_SPI_Receive(&hspi1, &cmd, 1, HAL_MAX_DELAY);
 	HAL_GPIO_WritePin(LCD_CE_GPIO_Port, LCD_CE_Pin, GPIO_PIN_SET);
 }
 
@@ -31,8 +29,6 @@ void lcd_data(const uint8_t** data, const uint8_t rows, const uint8_t columns)
 		{
 			while(HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY);
 			err_transmit = HAL_SPI_Transmit(&hspi1, *(data + i) + j, 1, HAL_MAX_DELAY);
-			while(HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY);
-			err_receive = HAL_SPI_Receive(&hspi1, *(data + i) + j, 1, HAL_MAX_DELAY);
 		}
 
 	}
