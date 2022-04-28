@@ -48,7 +48,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+uint8_t** board_data = NULL;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

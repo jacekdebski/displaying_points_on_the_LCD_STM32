@@ -3,6 +3,9 @@
 
 #include <stdint.h>
 
+#define LCD_ROWS 5
+#define LCD_COLUMNS 48
+
 void lcd_reset(void);
 
 void lcd_cmd(uint8_t cmd);
