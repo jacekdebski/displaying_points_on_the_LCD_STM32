@@ -48,16 +48,13 @@ void set_position(uint8_t* x, uint8_t* y){
 	lcd_cmd(0x40 | (*y/8));
 }
 
-void display_point(uint8_t* x, uint8_t* y){
-	uint8_t pt = 0x3 << (*y%7);
-	set_position(x, y);
-	lcd_data(&pt, 1);
+void set_point(uint8_t** data, uint8_t* x, uint8_t* y){
+	*(*(data + (*y/8)) + *x) |= 0x1 << *y%8;
 }
 
-void clear_point(uint8_t* x, uint8_t* y){
-	uint8_t clr_pt = 0x0;
-	set_position(x, y);
-	lcd_data(&clr_pt, 1);
+void clear_point(uint8_t** data, uint8_t* x, uint8_t* y){
+	*(*(data + (*y/8)) + *x) &= ~(0x1 << *y%8);
+}
 
 void load_board_data(const uint8_t** data, const uint8_t rows, const uint8_t columns)
 {

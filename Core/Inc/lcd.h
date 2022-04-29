@@ -16,9 +16,9 @@ void lcd_init();
 
 void set_position(uint8_t* x, uint8_t* y);
 
-void display_point(uint8_t* x, uint8_t* y);
+void set_point(uint8_t** data, uint8_t* x, uint8_t* y);
 
-void clear_point(uint8_t* x, uint8_t* y);
+void clear_point(uint8_t** data, uint8_t* x, uint8_t* y);
 
 void load_board_data(const uint8_t** data, const uint8_t rows, const uint8_t columns);
 

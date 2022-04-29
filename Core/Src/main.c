@@ -167,7 +167,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	if(GPIO_Pin == USER_BUTTON_Pin)
 	{
 		generate_position(&x, &y);
-		*(*(board_data + (y/8)) + x) = 0x1 << y%8;
+		set_point(board_data, &x, &y);
 		set_position(0, 0);
 		load_board_data((const uint8_t**)board_data, LCD_ROWS, LCD_COLUMNS);
 	}
