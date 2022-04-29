@@ -20,4 +20,6 @@ void display_point(uint8_t* x, uint8_t* y);
 
 void clear_point(uint8_t* x, uint8_t* y);
 
+void load_board_data(const uint8_t** data, const uint8_t rows, const uint8_t columns);
+
 #endif /* INC_LCD_H_ */

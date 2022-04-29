@@ -58,4 +58,8 @@ void clear_point(uint8_t* x, uint8_t* y){
 	uint8_t clr_pt = 0x0;
 	set_position(x, y);
 	lcd_data(&clr_pt, 1);
+
+void load_board_data(const uint8_t** data, const uint8_t rows, const uint8_t columns)
+{
+	lcd_data(data, rows, columns);
 }

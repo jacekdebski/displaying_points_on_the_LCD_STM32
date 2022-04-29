@@ -29,6 +29,7 @@
 #include <string.h>
 #include "generate_number.h"
 #include "lcd.h"
+#include "memory_allocation.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,6 +97,8 @@ int main(void)
   lcd_init();
   const char init_message[] = "Starting program...";
   HAL_UART_Transmit(&huart2, (uint8_t*)init_message, strlen(init_message), HAL_MAX_DELAY);
+  allocate_memory(&board_data, LCD_ROWS, LCD_COLUMNS);
+  load_board_data((const uint8_t**)board_data, LCD_ROWS, LCD_COLUMNS);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -164,7 +167,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	if(GPIO_Pin == USER_BUTTON_Pin)
 	{
 		generate_position(&x, &y);
-		display_point(&x, &y);
+		*(*(board_data + (y/8)) + x) = 0x1 << y%8;
+		set_position(0, 0);
+		load_board_data((const uint8_t**)board_data, LCD_ROWS, LCD_COLUMNS);
 	}
 }
 /* USER CODE END 4 */
