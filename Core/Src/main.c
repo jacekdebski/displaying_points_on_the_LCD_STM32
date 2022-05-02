@@ -30,6 +30,7 @@
 #include "generate_number.h"
 #include "lcd.h"
 #include "memory_allocation.h"
+#include "manipulation.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -160,14 +161,14 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+	uint8_t x = 0;
+	uint8_t y = 0;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	uint8_t x;
-	uint8_t y;
 	if(GPIO_Pin == USER_BUTTON_Pin)
 	{
-		generate_position(&x, &y);
 		set_point(board_data, &x, &y);
+		move(board_data, &x, &y, RIGHT);
 		set_position(0, 0);
 		load_board_data((const uint8_t**)board_data, LCD_ROWS, LCD_COLUMNS);
 	}
