@@ -1,5 +1,4 @@
 #include "lcd.h"
-#include "spi.h"
 
 void lcd_reset(){
 	HAL_GPIO_WritePin(LCD_RST_GPIO_Port, LCD_RST_Pin, GPIO_PIN_RESET);

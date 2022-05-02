@@ -2,9 +2,12 @@
 #define INC_LCD_H_
 
 #include <stdint.h>
+#include "spi.h"
 
 #define LCD_ROWS 6
 #define LCD_COLUMNS 84
+#define LCD_MAX_INDEX_X 83
+#define LCD_MAX_INDEX_Y 47
 
 void lcd_reset(void);
 
