@@ -51,6 +51,8 @@
 
 /* USER CODE BEGIN PV */
 uint8_t** board_data = NULL;
+uint8_t x = 0;
+uint8_t y = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -99,6 +101,7 @@ int main(void)
   const char init_message[] = "Starting program...";
   HAL_UART_Transmit(&huart2, (uint8_t*)init_message, strlen(init_message), HAL_MAX_DELAY);
   allocate_memory(&board_data, LCD_ROWS, LCD_COLUMNS);
+  set_point(board_data, &x, &y);
   load_board_data((const uint8_t**)board_data, LCD_ROWS, LCD_COLUMNS);
   /* USER CODE END 2 */
 
@@ -161,17 +164,18 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-	uint8_t x = 0;
-	uint8_t y = 0;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	if(GPIO_Pin == USER_BUTTON_Pin)
+	if(GPIO_Pin == EXTERNAL_BUTTON_Pin)
 	{
-		set_point(board_data, &x, &y);
-		move(board_data, &x, &y, RIGHT);
-		set_position(0, 0);
-		load_board_data((const uint8_t**)board_data, LCD_ROWS, LCD_COLUMNS);
+		move(board_data, &x, &y, LEFT);
 	}
+	else if(GPIO_Pin == USER_BUTTON_Pin)
+	{
+		move(board_data, &x, &y, RIGHT);
+	}
+	set_position(0, 0);
+	load_board_data((const uint8_t**)board_data, LCD_ROWS, LCD_COLUMNS);
 }
 /* USER CODE END 4 */
 
