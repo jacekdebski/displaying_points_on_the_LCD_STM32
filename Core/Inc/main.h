@@ -63,9 +63,9 @@ void Error_Handler(void);
 #define USER_BUTTON_EXTI_IRQn EXTI15_10_IRQn
 #define RCC_OSC32_OUT_Pin GPIO_PIN_15
 #define RCC_OSC32_OUT_GPIO_Port GPIOC
-#define EXTERNAL_BUTTON_Pin GPIO_PIN_0
-#define EXTERNAL_BUTTON_GPIO_Port GPIOC
-#define EXTERNAL_BUTTON_EXTI_IRQn EXTI0_IRQn
+#define LEFT_BUTTON_Pin GPIO_PIN_0
+#define LEFT_BUTTON_GPIO_Port GPIOC
+#define LEFT_BUTTON_EXTI_IRQn EXTI0_IRQn
 #define LCD_DC_Pin GPIO_PIN_1
 #define LCD_DC_GPIO_Port GPIOC
 #define LCD_CE_Pin GPIO_PIN_2
@@ -78,12 +78,21 @@ void Error_Handler(void);
 #define USART_RX_GPIO_Port GPIOA
 #define LCD_BL_Pin GPIO_PIN_4
 #define LCD_BL_GPIO_Port GPIOC
+#define DOWN_BUTTON_Pin GPIO_PIN_2
+#define DOWN_BUTTON_GPIO_Port GPIOB
+#define DOWN_BUTTON_EXTI_IRQn EXTI2_TSC_IRQn
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
 #define TCK_GPIO_Port GPIOA
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
+#define RIGHT_BUTTON_Pin GPIO_PIN_8
+#define RIGHT_BUTTON_GPIO_Port GPIOB
+#define RIGHT_BUTTON_EXTI_IRQn EXTI9_5_IRQn
+#define UP_BUTTON_Pin GPIO_PIN_9
+#define UP_BUTTON_GPIO_Port GPIOB
+#define UP_BUTTON_EXTI_IRQn EXTI9_5_IRQn
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

@@ -166,13 +166,21 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	if(GPIO_Pin == EXTERNAL_BUTTON_Pin)
+	if(GPIO_Pin == LEFT_BUTTON_Pin)
 	{
 		move(board_data, &x, &y, LEFT);
 	}
-	else if(GPIO_Pin == USER_BUTTON_Pin)
+	else if(GPIO_Pin == RIGHT_BUTTON_Pin)
 	{
 		move(board_data, &x, &y, RIGHT);
+	}
+	else if(GPIO_Pin == UP_BUTTON_Pin)
+	{
+		move(board_data, &x, &y, UP);
+	}
+	else if(GPIO_Pin == DOWN_BUTTON_Pin)
+	{
+			move(board_data, &x, &y, DOWN);
 	}
 	set_position(0, 0);
 	load_board_data((const uint8_t**)board_data, LCD_ROWS, LCD_COLUMNS);
